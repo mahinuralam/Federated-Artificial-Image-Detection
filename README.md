@@ -26,9 +26,8 @@ Federated pipeline for detecting AI-generated imagery with an attention-augmente
 3. Metrics and figures are written to the working directory (e.g., `fl_iid_comprehensive_analysis.png`).
 
 ## Result
+<img width="1053" height="576" alt="image" src="https://github.com/user-attachments/assets/b0ac5f78-b052-4b49-b737-d29d94d8390c" />
+<img width="1198" height="900" alt="image" src="https://github.com/user-attachments/assets/62407846-ff0e-4809-b1c3-bd966268d641" />
+<img width="1314" height="330" alt="image" src="https://github.com/user-attachments/assets/19600095-4159-4106-8802-ac500669a7a5" />
 
-![image](https://github.com/user-attachments/assets/13f6e507-cc62-41e6-8494-e099b86d5109)
 
-![image](https://github.com/user-attachments/assets/2b5556f4-a42a-49aa-9128-96d292d1f3d3)
-
-![image](https://github.com/user-attachments/assets/4cb3f085-0ed8-4126-8cc0-5a8ab95ee4cd)
