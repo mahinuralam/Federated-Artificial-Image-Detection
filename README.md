@@ -10,7 +10,7 @@ Federated pipeline for detecting AI-generated imagery with an attention-augmente
 
 ## Data
 
-1. Default pipeline: CIFAR-10 loader normalizes to `[0,1]`, one-hot encodes labels, then splits 90/10.
+1. Default pipeline: RealAIGI loader normalizes to `[0,1]`, one-hot encodes labels, then splits 90/10.
 2. Custom dataset: place class folders under `Datasets/<name>/class_x/*.jpg`; use the notebook cell that wraps `load_local_dataset` to build `image_list` and `label_list`.
 
 ## Running the notebook
@@ -19,7 +19,7 @@ Federated pipeline for detecting AI-generated imagery with an attention-augmente
 2. Execute sections in order:
 	- helper utilities
 	- MACNN definition
-	- data loader (CIFAR-10 or custom)
+	- data loader
 	- train/test split and client creation
 	- IID federated training + plots
 	- Non-IID federated training + comparison plots
