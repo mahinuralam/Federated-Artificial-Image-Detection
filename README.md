@@ -10,6 +10,8 @@ Federated pipeline for detecting AI-generated imagery with an attention-augmente
 
 ## Data
 
+# The dataset is available on IEEE DataPortal -> https://ieee-dataport.org/documents/realaigi-realistic-ai-generated-image-dataset
+
 1. Default pipeline: RealAIGI loader normalizes to `[0,1]`, one-hot encodes labels, then splits 90/10.
 2. Custom dataset: place class folders under `Datasets/<name>/class_x/*.jpg`; use the notebook cell that wraps `load_local_dataset` to build `image_list` and `label_list`.
 
