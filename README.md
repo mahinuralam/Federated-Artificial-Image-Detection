@@ -5,6 +5,7 @@ Official implementation of the paper:
 > **FMACNN: Federated Multi-Attention CNN Framework for Artificial Image Detection**
 > Md Mahinur Alam, Mohtasin Golam, Taesoo Jun
 > *Journal of Information Security and Applications*, vol. 100, p. 104462, 2026, Elsevier.
+> [Read the paper](https://www.sciencedirect.com/science/article/abs/pii/S221421262600092X)
 
 ---
 
