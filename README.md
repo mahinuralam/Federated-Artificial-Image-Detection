@@ -11,13 +11,12 @@ Official implementation of the paper:
 
 ## Overview
 
-FMACNN is a privacy-preserving framework that detects AI-generated images without centralising data. Multiple clients train a shared model locally and only share model updates — never raw images.
+FMACNN is a privacy-preserving framework that detects AI-generated images without centralising data. Multiple clients train a shared model locally and only share model updates.
 
 ## Model Architecture
 
 - A CNN with built-in attention mechanisms that help the model focus on the most informative regions and channels of an image
 - Three convolutional stages with progressively deeper feature extraction
-- Designed to distinguish real photographs from AI-generated images
 
 ## Federated Learning
 
