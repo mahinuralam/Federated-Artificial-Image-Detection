@@ -9,22 +9,12 @@ Official implementation of the paper:
 
 ---
 
-## Overview
+## Key Contributions
 
-FMACNN is a privacy-preserving framework that detects AI-generated images without centralising data. Multiple clients train a shared model locally and only share model updates.
-
-## Model Architecture
-
-- A CNN with built-in attention mechanisms that help the model focus on the most informative regions and channels of an image
-- Three convolutional stages with progressively deeper feature extraction
-
-## Federated Learning
-
-- Multiple clients train on their own local data and contribute to a shared global model
-- Supports two data settings:
-  - **IID** — each client has a balanced mix of classes (ideal scenario)
-  - **Non-IID** — each client has a skewed class distribution (realistic scenario)
-- Aggregation is done via weighted averaging with outlier suppression to keep training stable
+- Proposed FMACNN, a federated learning framework for detecting AI-generated images while preserving data privacy
+- Designed a Multi-Attention CNN (MACNN) combining channel and spatial attention for robust feature extraction
+- Introduced a new realistic AI-generated image dataset — **RealAIGI**
+- Evaluated under both IID and Non-IID data distributions to reflect real-world federated scenarios
 
 ## Dataset — RealAIGI
 
