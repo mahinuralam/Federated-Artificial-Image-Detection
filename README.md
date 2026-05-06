@@ -8,30 +8,28 @@ Official implementation of the paper:
 
 ---
 
+## Overview
+
+FMACNN is a privacy-preserving framework that detects AI-generated images without centralising data. Multiple clients train a shared model locally and only share model updates — never raw images.
+
 ## Model Architecture
 
-- Three convolutional blocks, each with double Conv2D layers, Batch Normalization, and L2 regularization (He normal initialisation)
-- **Block 1** — Squeeze-and-Excitation (SE) channel attention + spatial attention
-- **Block 2** — SE channel attention + dual-pooling channel attention (CBAM-style)
-- **Block 3** — deep feature extraction without attention gating
-- Fully connected head: Dense(512) → Dense(256) → Softmax, with Batch Normalization and Dropout at each layer
+- A CNN with built-in attention mechanisms that help the model focus on the most informative regions and channels of an image
+- Three convolutional stages with progressively deeper feature extraction
+- Designed to distinguish real photographs from AI-generated images
 
-## Federated Learning Architecture
+## Federated Learning
 
-- **Protocol**: FedAvg with per-round client sampling and multiple local epochs
-- **Client scaling**: weight contributions scaled by N_k / N (selected clients only, factors sum to 1)
-- **Aggregation**: percentile-based weight clipping (95th) to suppress destabilising outlier updates
-- **Stability monitoring**: L2 weight-divergence tracked across rounds
-- **IID mode**: data randomly shuffled before sharding — uniform class distribution per client
-- **Non-IID mode**: data sorted by class label before sharding — skewed, realistic heterogeneous distribution
-- **Early stopping**: configurable accuracy target, wall-clock budget, and per-client batch cap
+- Multiple clients train on their own local data and contribute to a shared global model
+- Supports two data settings:
+  - **IID** — each client has a balanced mix of classes (ideal scenario)
+  - **Non-IID** — each client has a skewed class distribution (realistic scenario)
+- Aggregation is done via weighted averaging with outlier suppression to keep training stable
 
 ## Dataset — RealAIGI
 
-- Realistic AI-Generated Image dataset published on IEEE DataPort
-- **Download**: [https://dx.doi.org/10.21227/0da4-g645](https://dx.doi.org/10.21227/0da4-g645)
-- Images normalised to `[0, 1]`, one-hot encoded labels, 90/10 train/test split
-- Custom datasets are also supported: place class folders under `Datasets/<name>/<class>/` and point `configs/default.yaml` at the root
+- A realistic dataset of real and AI-generated images
+- Published on IEEE DataPort: [https://dx.doi.org/10.21227/0da4-g645](https://dx.doi.org/10.21227/0da4-g645)
 
 ## Results
 
@@ -52,24 +50,16 @@ pip install -e ".[dev]"
 ## Usage
 
 ```bash
-# Full training (IID + Non-IID) with default config
+# Run full training
 python -m fmacnn --config configs/default.yaml
 
-# Single mode
+# Run IID or Non-IID only
 python -m fmacnn --mode iid
 python -m fmacnn --mode noniid
 
-# Quick smoke-test (5 rounds, reduced image size)
+# Quick test run
 python -m fmacnn --config configs/debug.yaml
-
-# Custom dataset path and output directory
-python -m fmacnn --data-root /path/to/dataset --output-dir runs/exp1
-
-# Run tests
-pytest
 ```
-
-All outputs (trained models, metrics JSON, plots) are written to `outputs/` by default.
 
 ---
 
