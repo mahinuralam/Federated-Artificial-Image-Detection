@@ -1,0 +1,43 @@
+data:
+  root: "Datasets/RealAIGI"
+  target_size: [256, 256]
+  color_mode: "rgb"
+  test_size: 0.1
+  random_state: 42
+
+model:
+  l2_reg: 0.0001
+
+federated:
+  threshold_percentile: 95
+  momentum: 0.9
+  nesterov: true
+
+iid:
+  num_clients: 100
+  num_clients_per_round: 10
+  comms_round: 100
+  local_epochs: 3
+  batch_size: 32
+  initial_lr: 0.01
+  lr_decay_rate: 0.96
+  lr_decay_steps: 10
+
+noniid:
+  num_clients: 100
+  num_clients_per_round: 10
+  comms_round: 150
+  local_epochs: 3
+  batch_size: 32
+  initial_lr: 0.008
+  lr_decay_rate: 0.98
+  lr_decay_steps: 15
+  max_batches_per_client: null   # set to an int to cap batches per client per round
+  max_total_minutes: null        # set to a float to enforce a wall-clock budget
+  target_accuracy: null          # set to a float for accuracy-based early stopping
+
+output:
+  dir: "outputs"
+
+mode: "both"   # "iid" | "noniid" | "both"
+debug: false

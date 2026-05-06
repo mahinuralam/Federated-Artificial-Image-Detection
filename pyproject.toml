@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "fmacnn"
+version = "0.1.0"
+description = "Federated Multi-Attention CNN for AI-generated image detection"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "tensorflow>=2.12",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "tqdm",
+    "opencv-python",
+    "pyyaml",
+    "imutils",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+]
+
+[project.scripts]
+fmacnn-train = "fmacnn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fmacnn*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
