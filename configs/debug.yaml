@@ -1,0 +1,44 @@
+# Quick smoke-test config — reduces every workload so the loop runs in minutes.
+data:
+  root: "Datasets/RealAIGI"
+  target_size: [64, 64]
+  color_mode: "rgb"
+  test_size: 0.1
+  random_state: 42
+
+model:
+  l2_reg: 0.0001
+
+federated:
+  threshold_percentile: 95
+  momentum: 0.9
+  nesterov: true
+
+iid:
+  num_clients: 10
+  num_clients_per_round: 3
+  comms_round: 5
+  local_epochs: 1
+  batch_size: 16
+  initial_lr: 0.01
+  lr_decay_rate: 0.96
+  lr_decay_steps: 2
+
+noniid:
+  num_clients: 10
+  num_clients_per_round: 3
+  comms_round: 5
+  local_epochs: 1
+  batch_size: 16
+  initial_lr: 0.008
+  lr_decay_rate: 0.98
+  lr_decay_steps: 2
+  max_batches_per_client: 3
+  max_total_minutes: 5.0
+  target_accuracy: 0.65
+
+output:
+  dir: "outputs/debug"
+
+mode: "both"
+debug: true
